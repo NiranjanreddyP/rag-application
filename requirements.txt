@@ -1,0 +1,7 @@
+streamlit
+pymupdf
+langchain-core
+langchain-text-splitters
+pinecone
+groq
+python-dotenv
