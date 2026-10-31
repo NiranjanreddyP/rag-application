@@ -6,7 +6,7 @@ import streamlit as st
 # Import your modular processing blocks
 from src.ingestion.pdf_loader import load_pdf
 from src.ingestion.chunker import create_chunks
-from src.vectorstore.pinecone_store import retrieve_chunks
+from src.vectorstore.pinecone_store import store_chunks 
 from src.rag.pipeline import rag_pipeline
 
 load_dotenv()
@@ -58,7 +58,7 @@ with st.sidebar:
                     
                     # Step 4: Stream vectorized token items down to Pinecone index
                     status.write("Pushing token fragments up to Pinecone cluster...")
-                    retrieve_chunks(chunks)
+                    store_chunks (chunks)
                     
                     status.update(label="✅ Ingestion Success!", state="complete", expanded=False)
                     st.sidebar.success(f"Successfully processed and indexed: **{uploaded_file.name}**")
